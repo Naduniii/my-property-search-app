@@ -34,3 +34,9 @@ return (
        </div>
 );
 }
+export default function Favorites ({Favorites, addFavorite,removeFavorite,clearFavorites}){
+    const [{isOver}, drop] = useDrop ({
+        accept: [ ItemTypes.PROPERTY],
+        drop: (item) => {
+            addFavorite(item.property);
+        },
