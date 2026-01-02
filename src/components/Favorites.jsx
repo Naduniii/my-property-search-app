@@ -40,3 +40,38 @@ export default function Favorites ({Favorites, addFavorite,removeFavorite,clearF
         drop: (item) => {
             addFavorite(item.property);
         },
+
+        collect: (monitor) => ({
+            isOver: !!monitor.isOver(),
+        }),
+    });
+  return (
+    <aside
+       ref = {drop}
+       style={{
+        flex: '0 0 300px',
+        border: '2px dashed #007bff',
+        padding: '1rem',
+        minHeight: '400px',
+        backgroundColor: isOver ? '#e6f0ff' : '#f9f9f9',
+        borderRadius: '8px',
+        display: 'flex',
+        flexDirection: 'column',
+    }}
+        aria-label= "Favoutites List Drop Area"
+        >
+        <h2>Favourites</h2>
+        {favourites.length === 0 ? (
+            <p>No favorite properties yet. Drag properties here or use the button.</p>
+        ) : (
+            <>
+            <ul
+               style={{
+                listStyle: 'none',
+                padding: 0,
+                maxHeight: '300px',
+                overflowY: 'auto',
+                flexGrow: 1,
+            }}
+            >
+        
