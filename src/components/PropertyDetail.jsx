@@ -68,4 +68,51 @@ export default function PropertyDetail({ properties, Favorites, addFavorite, rem
             ))}
             </div>
             </div>
-            
+            {/* Thumbnails */}
+           <div style = {{marginTop: '1rem'}}>
+            {isFavorited ? (
+                <button onClick={() => removeFavorite(property.id)} aria-label = "Remove from favourites" style={{marginRight: '1rem'}}>
+                    Remove from Favorites
+                </button>
+            ) : (
+                <button onClick = {() => addFavorite(property)} aria-label="Add to favorites" style={{marginRight: '1rem'}}>
+                    Add to Favorites
+                </button>
+
+            )}
+            </div>
+
+            <Tabs style={{marginTop: '1rem'}}>
+                <TabList>
+                    <Tab>Description</Tab>
+                    <Tab>Floor Plan</Tab>
+                    <Tab>Map</Tab>
+                </TabList>
+
+                <TabPanel>
+                    <p>{property.longDescription}</p>
+                </TabPanel>
+                <TabPanel>
+                     <img src={property.floorPlan} alt="Floor plan" style={{ maxWidth: '100%', borderRadius: '8px' }} />
+        </TabPanel>
+        <TabPanel>
+                    <iframe
+                       title= "Property Location"
+                       src = {property.mapEmbedUrl}
+                       width="100%"
+                       height = "300"
+                       style={{border: 0, borderRadius: '8px'}}
+                       allowFullScreen=""
+                       loading="lazy"
+                       referrerPolicy="no-referrer-when-downgrade"
+                       />
+                   </TabPanel>
+                   </Tabs>
+                   </div>
+                   );
+                   }
+        
+
+                
+
+
