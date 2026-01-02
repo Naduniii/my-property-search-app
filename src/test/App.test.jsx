@@ -6,7 +6,7 @@ import {BrowserRouter} from 'react-router-dom';
 test('renders search page with properties', ()=> {
     render(
         <BrowserRouter>
-            <App / >
+            <App />
         </BrowserRouter>
     );
     const heading = screen.getByText(/Property Search/i);
@@ -19,11 +19,11 @@ test('search filters by type', () => {
         </BrowserRouter>
     );
     const typeSelect = screen.getByLabelText (/Property Type/i);
-    fireEvent.change(typeSelect, {target: {value: "House "}});
+    fireEvent.change(typeSelect, {target: {value: "House"}});
 
     const results = screen.getAllByRole ('heading' , {level: 3});
-    results.forEach((res)) => {
-        expect(resizeBy.textContent).toMatch(/House/i);
+    results.forEach((res) => {
+        expect(res.textContent).toMatch(/House/i);
     });
     
 });
