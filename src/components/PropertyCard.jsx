@@ -11,7 +11,7 @@ export default function PropertyCard ({property, isFavorites, addFavotite, remov
             isDragging: !!monitor.isDragging(),
         }),
     }));
-
+    
 return (
     <div
        ref={drag}
