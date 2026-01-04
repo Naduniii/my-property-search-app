@@ -30,9 +30,10 @@ return (
     >
         <Link to={`/property/${property.id}`}>
         <img src = {property.picture}
-            style={{width: '100%', height: '180px', objectFit: 'cover', borderRadius: '6px'}}
+             alt={`${property.id}`}
+             style={{width: '100%', height: '180px', objectFit: 'cover', borderRadius: '6px'}}
         />
-        <h3 style = {{margin: '0.5rem'}}>
+        <h3 style = {{margin: '0.5rem 0'}}>
             {property.type} - £{property.price.toLocaleString()}
 
         </h3>
@@ -49,7 +50,7 @@ return (
                 Remove Favorite
             </button>
         ) : (
-            <button onClick={() => addFavorite(property)} aria-label = "Add to favourits">
+            <button onClick={() => addFavorite(property)} aria-label = "Add to favorites">
                 Add to Favorites
             </button>
         )}

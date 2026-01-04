@@ -25,8 +25,7 @@ export default function SearchPage ({
     const filteredProperties = useMemo(() => {
         return properties.filter((property) => {
                   // Property type filter
-            if (searchFilters.type && searchFilters.type !== 'any' && property.type.toLowerCase() 
-                !== searchFilters.type.toLowerCase()) {
+            if (searchFilters.type && searchFilters.type !== 'any' && property.type.toLowerCase() !== searchFilters.type.toLowerCase()) {
                 return false;
             }
                  // Price range filter
@@ -34,25 +33,34 @@ export default function SearchPage ({
                 return false;
             if (searchFilters.maxPrice && property.price > Number (searchFilters.maxPrice))
                 return false;
+
                   // Bedroom count filter
             if (searchFilters.minBedrooms && property.bedrooms < Number (searchFilters.minBedrooms))
                 return false;
             if (searchFilters.maxBedrooms && property.bedrooms > Number (searchFilters.maxBedrooms))
                 return false;
+              
                   // Date added filter
             if (searchFilters.afterDate){
                 const propertyDate = new Date(property.added.year, new Date (`${property.added.month} 1, 2000`).getMonth(),property.added.day);
-                    const filterDate = new Date(searchFilters.afterDate);
-                    if (propertyDate < filterDate) 
-                        return false;
+                const filterDate = new Date(searchFilters.afterDate);
+                if (propertyDate < filterDate) 
+                  return false;
                 }
                       // Postcode area filter
-                    if (searchFilters.postcodeArea){
-                        if (!property.location.toLowerCase().startsWith(searchFilters.postcodeArea.toLowerCase())) return false;
-                    }
-                            return true;
-                });
-            }, [properties, searchFilters]);
+            if (searchFilters.postcodeArea) {
+                const parts = property.location.trim().split(" ");
+                const propertyArea = parts[parts.length - 1].toLowerCase();   // e.g. "br5"
+
+                if (!propertyArea.startsWith(searchFilters.postcodeArea.toLowerCase())) {
+                  return false;
+                }
+            }
+
+            return true;
+       });
+    }, [properties, searchFilters]);
+
 
     return (
     <div className="App" style={{ display: 'flex', gap: '1rem' }}>

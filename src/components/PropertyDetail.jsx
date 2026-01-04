@@ -1,6 +1,6 @@
-import React, {useState} from 'react';
-import {useParams, Link} from 'react-router-dom';
-import {useDrag} from 'react-dnd';
+import React, { useState } from 'react';
+import { useParams, Link } from 'react-router-dom';
+import { useDrag}  from 'react-dnd';
 import { ItemTypes } from '../dndTypes';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
@@ -8,7 +8,7 @@ import 'react-tabs/style/react-tabs.css';
 
 
 
-export default function PropertyDetail({ properties, favorites, addFavorite, removeFavorite}){
+export default function PropertyDetail({ properties, favorites, addFavorite, removeFavorite }){
     const {id} = useParams();
     const property = properties.find((p) => String(p.id) === id);
 
@@ -65,7 +65,7 @@ export default function PropertyDetail({ properties, favorites, addFavorite, rem
                 height: '50px',
                 objectFit: 'cover',
                 borderRadius: '6px',
-                border: selectedImage === pic ? '2px solid #007bff ': '1px solid #ccc',
+                border: selectedImage === pic ? '2px solid #007bff': '1px solid #ccc',
                 cursor: 'pointer',
                }}
                onClick={() => setSelectedImage(pic)}
@@ -99,10 +99,10 @@ export default function PropertyDetail({ properties, favorites, addFavorite, rem
                 </TabPanel>
                 <TabPanel>
                      <img src={property.floorPlan} alt="Floor plan" style={{ maxWidth: '100%', borderRadius: '8px' }} />
-        </TabPanel>
-        <TabPanel>
+                </TabPanel>
+                <TabPanel>
                     <iframe
-                       title= "Property Location"
+                       title= "Property location"
                        src = {property.mapEmbedUrl}
                        width="100%"
                        height = "300"
@@ -111,13 +111,11 @@ export default function PropertyDetail({ properties, favorites, addFavorite, rem
                        loading="lazy"
                        referrerPolicy="no-referrer-when-downgrade"
                        />
-                   </TabPanel>
-                   </Tabs>
-                   </div>
-                   );
-                   }
+                </TabPanel>
+            </Tabs>
+        </div>
+    );
+}
         
-
-                
 
 

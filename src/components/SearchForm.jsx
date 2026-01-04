@@ -27,11 +27,11 @@ export default function SearchForm ({searchFilters, setSearchFilters}){
           >
           <TextField
             select
-            label="Property type"
+            label="Property Type"
             value={searchFilters.type}
-            onChange={(e) => handleChange('type' ,e.target.value)}
-            variant = "outlined"
-            size = "small"
+            onChange={(e) => handleChange('type', e.target.value)}
+            variant="outlined"
+            size="small"
             >
             {propertyTypes.map((option) =>(
                 <MenuItem key = {option.value} value = {option.value === 'any' ? '': option.value}>
@@ -45,40 +45,40 @@ export default function SearchForm ({searchFilters, setSearchFilters}){
                 type="number"
                 label = "Min price"
                 value = {searchFilters.minPrice}
-                onChange = {(e) => handleChange ('minPrice' , e.target.value)}
-                variant = "outlined"
-                size = "small"
-                inputProps = {{min: 0}}
+                onChange = {(e) => handleChange ('minPrice', e.target.value)}
+                variant="outlined"
+                size="small"
+                inputProps = {{ min: 0 }}
             />
 
              <TextField
                 type="number"
                 label = "Max price"
                 value = {searchFilters.maxPrice}
-                onChange = {(e) => handleChange ('maxPrice' , e.target.value)}
-                variant = "outlined"
-                size = "small"
-                inputProps = {{min: 0}}
+                onChange = {(e) => handleChange ('maxPrice', e.target.value)}
+                variant="outlined"
+                size="small"
+                inputProps = {{ min: 0 }}
             />
 
                <TextField
                 type="number"
                 label = "Min Bedrooms"
                 value = {searchFilters.minBedrooms}
-                onChange = {(e) => handleChange ('minBedrooms' , e.target.value)}
-                variant = "outlined"
-                size = "small"
-                inputProps = {{min: 0}}
+                onChange = {(e) => handleChange ('minBedrooms', e.target.value)}
+                variant="outlined"
+                size="small"
+                inputProps = {{ min: 0 }}
             />
 
                <TextField
                 type="number"
                 label = "Max Bedrooms"
                 value = {searchFilters.maxBedrooms}
-                onChange = {(e) => handleChange ('maxBedrooms' , e.target.value)}
-                variant = "outlined"
-                size = "small"
-                inputProps = {{min: 0}}
+                onChange = {(e) => handleChange ('maxBedrooms', e.target.value)}
+                variant="outlined"
+                size="small"
+                inputProps = {{ min: 0 }}
             />
 
            <LocalizationProvider dateAdapter = {AdapterDayjs}>
@@ -98,8 +98,8 @@ export default function SearchForm ({searchFilters, setSearchFilters}){
                     label = "Postcode Area"
                     value = {searchFilters.postcodeArea}
                     onChange={(e) => handleChange ('postcodeArea', e.target.value)}
-                    variant = "outlined"
-                    size = "small"
+                    variant="outlined"
+                    size="small"
                     />
                     </form>
                 );
