@@ -17,7 +17,7 @@ export default function PropertyDetail({ properties, favorites, addFavorite, rem
     // Track currently selected image
     const [selectedImage, setSelectedImage] = useState(property.pictures[0]);
     // Check whether property is in favorites
-    const isFavorited = Favorites.some((fav) => fav.id === property.id);
+    const isFavorited = favorites.some((fav) => fav.id === property.id);
       // Enable dragging property into favorites
     const [{ isDragging}, drag] = useDrag(() => ({
         type: ItemTypes.PROPERTY,
@@ -35,7 +35,7 @@ export default function PropertyDetail({ properties, favorites, addFavorite, rem
 
         <div
            ref = {drag}
-           style = {{cursor: 'move', opacity: isDragging ? 0.5:1, border: '1rem',borderRadius: '8px'}}
+           style={{ cursor: 'move', opacity: isDragging ? 0.5 : 1, border: '1px solid #ccc', padding: '1rem', borderRadius: '8px' }}
            aria-label = "Drag property to add to favourites"
         >
         <img
@@ -63,7 +63,7 @@ export default function PropertyDetail({ properties, favorites, addFavorite, rem
                 height: '50px',
                 objectFit: 'cover',
                 borderRadius: '6px',
-                border: selectImage === pic ? '2px solid #007bff ': '1px solid #ccc',
+                border: selectedImage === pic ? '2px solid #007bff ': '1px solid #ccc',
                 cursor: 'pointer',
                }}
                onClick={() => setSelectedImage(pic)}

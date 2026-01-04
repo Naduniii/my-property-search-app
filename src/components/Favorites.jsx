@@ -2,7 +2,7 @@ import React from 'react';
 import {useDrop} from 'react-dnd';
 import {ItemTypes} from '../dndTypes';
 
-function RemoveZone({removeFavorites}){
+function RemoveZone({removeFavorite}){
     const [{ isOver, canDrop}, drop] = useDrop({
         accept: [ItemTypes.FAVORITE],
         drop: (item) => {
@@ -28,13 +28,13 @@ return (
         cursor: 'pointer',
         userSelect: 'none',
        }}
-       aria-lebel="Remove favorite drop zone"
+       aria-label="Remove favorite drop zone"
        >
-       Drag here to ramove favorite
+       Drag here to remove favorite
        </div>
 );
 }
-export default function Favorites ({Favorites, addFavorite,removeFavorite,clearFavorites}){
+export default function Favorites({ favorites, addFavorite, removeFavorite, clearFavorites }) {
     const [{isOver}, drop] = useDrop ({
         accept: [ ItemTypes.PROPERTY],
         drop: (item) => {
@@ -58,10 +58,10 @@ export default function Favorites ({Favorites, addFavorite,removeFavorite,clearF
         display: 'flex',
         flexDirection: 'column',
     }}
-        aria-label= "Favoutites List Drop Area"
+        aria-label= "Favorites List Drop Area"
         >
-        <h2>Favourites</h2>
-        {favourites.length === 0 ? (
+        <h2>Favorites</h2>
+        {favorites.length === 0 ? (
             <p>No favorite properties yet. Drag properties here or use the button.</p>
         ) : (
             <>
@@ -75,7 +75,7 @@ export default function Favorites ({Favorites, addFavorite,removeFavorite,clearF
             }}
             >
 
-              {favourites.map((property) => (
+              {favorites.map((property) => (
                     <li
                        key= {property.id}
                        style={{

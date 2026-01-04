@@ -3,7 +3,7 @@ import {Link} from 'react-router-dom';
 import {useDrag} from 'react-dnd';
 import {ItemTypes} from '../dndTypes';
 
-export default function PropertyCard ({property, isFavorites, addFavotite, removeFavorite}) {
+export default function PropertyCard ({property, isFavorited, addFavorite, removeFavorite}) {
     const [{ isDragging }, drag] = useDrag (() => ({
         type: ItemTypes.PROPERTY,
         item: {property},
@@ -28,7 +28,7 @@ return (
         justifyContent: 'space-between',
        }}
     >
-        <Link to={`/property/ ${property.id}`}>
+        <Link to={`/property/${property.id}`}>
         <img src = {property.picture}
         style={{width: '100%', height: '180px', objectFit: 'cover', borderRadius: '6px'}}
         />
@@ -44,13 +44,13 @@ return (
         <p>
             <strong>Bedrooms: </strong> {property.bedrooms}
         </p>
-        {isFavorites ? (
-            <button onClick={() => removeFavorite(property.id)} aria-label = "Remove from favourites">
-                Remove Favotite
+        {isFavorited ? (
+            <button onClick={() => removeFavorite(property.id)} aria-label = "Remove from favorites">
+                Remove Favorite
             </button>
         ) : (
-            <button onClick={() => addFavotite (property)} aria-label = "Add to favourits">
-                Add to Favotites
+            <button onClick={() => addFavorite (property)} aria-label = "Add to favourits">
+                Add to Favorites
             </button>
         )}
     </div>
