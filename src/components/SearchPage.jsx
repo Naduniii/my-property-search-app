@@ -1,13 +1,13 @@
 import React, {useState, useMemo } from "react";
 import SearchForm from './SearchForm';
-import Propertylist from './PropertyList';
+import PropertyList from './PropertyList';
 import Favorites from './Favorites';
 
 export default function SearchPage ({
     // Store current search filter values
     properties,
     favorites,
-    addFavourite,
+    addFavorite,
     removeFavorite,
     clearFavorites
 }) {
@@ -22,22 +22,22 @@ export default function SearchPage ({
     });
      // Compute filtered properties based on search filters
 
-    const fileteredProperties = useMemo (() => {
+    const filteredProperties = useMemo (() => {
         return properties.filter ((property) => {
                   // Property type filter
-            if (searchFilters.type && searchFilters.type !== 'any' && property.type.toLoweCase() 
-                !==searchFilters.type.toLocaleLowerCase() !==setSearchFilters.type.toLocaleLowerCase()) {
+            if (searchFilters.type && searchFilters.type !== 'any' && property.type.toLowerCase() 
+                !== searchFilters.type.toLowerCase()) {
                 return false;
             }
                  // Price range filter
             if (searchFilters.minPrice && property.price < Number (searchFilters.minPrice))
                 return false;
-            if (searchFilters.maxPrice && property.price < Number (searchFilters.maxPrice))
+            if (searchFilters.maxPrice && property.price > Number (searchFilters.maxPrice))
                 return false;
                   // Bedroom count filter
             if (searchFilters.minBedrooms && property.bedrooms < Number (searchFilters.minBedrooms))
                 return false;
-            if (searchFilters.maxBedrooms && property.bedrooms < Number (searchFilters.maxBedrooms))
+            if (searchFilters.maxBedrooms && property.bedrooms > Number (searchFilters.maxBedrooms))
                 return false;
                   // Date added filter
             if (searchFilters.afterDate){
@@ -48,37 +48,25 @@ export default function SearchPage ({
                 }
                       // Postcode area filter
                     if (searchFilters.postcodeArea){
-                        if (! property.location.toLocaleLowerCase().startsWith (searchFilters.postcodeArea.toLocaleLowerCase()))
-                            return false;
-                        
+                        if (!property.location.toLowerCase().startsWith(searchFilters.postcodeArea.toLowerCase())) return false;
                     }
-                    return false;
+                            return true;
                 });
             }, [properties, searchFilters]);
 
     return (
-        <div className="App" style={{display: 'flex',gap: '1rem'}}>
-            <div style = {{flex: '1 1 65%'}}>
-                <h1>Property Search</h1>
-
-            <SearchForm
-                searchFilters={searchFilters}
-                setSearchFilters={setSearchFilters}
-                />
-            <Propertylist
-                properties = {fileteredProperties}
-                favorites = {favorites}
-                addFavourite = {addFavourite}
-                removeFavorite = {removeFavorite}
-                />
-                </div>
-            
-            <Favorites
-                favorites = {favorites}
-                addFavourite = {addFavourite}
-                removeFavorite = {removeFavorite}
-                clearFavorites = {clearFavorites} />
-
-            </div>
-    );
+    <div className="App" style={{ display: 'flex', gap: '1rem' }}>
+      <div style={{ flex: '1 1 65%' }}>
+        <h1>Property Search</h1>
+        <SearchForm searchFilters={searchFilters} setSearchFilters={setSearchFilters} />
+        <PropertyList
+          properties={filteredProperties}
+          favorites={favorites}
+          addFavorite={addFavorite}
+          removeFavorite={removeFavorite}
+        />
+      </div>
+      <Favorites favorites={favorites} addFavorite={addFavorite} removeFavorite={removeFavorite} clearFavorites={clearFavorites} />
+    </div>
+  );
 }

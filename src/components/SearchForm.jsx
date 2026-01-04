@@ -1,6 +1,6 @@
 import React from 'react';
-import {DataPicker} from '@mui/x-date-pickers/DatePicker';
-import {TextField, menuItem} from '@mui/material';
+import {DatePicker} from '@mui/x-date-pickers/DatePicker';
+import {TextField, MenuItem} from '@mui/material';
 import {AdapterDayjs} from '@mui/x-date-pickers/AdapterDayjs';
 import {LocalizationProvider} from '@mui/x-date-pickers/LocalizationProvider';
 import dayjs from 'dayjs';
@@ -31,7 +31,7 @@ export default function SearchForm ({searchFilters, setSearchFilters}){
             value={searchFilters.type}
             onChange={(e) => handleChange('type' ,e.target.value)}
             variant = "outlined"
-            sizw = "small"
+            size = "small"
             >
             {propertyTypes.map((option) =>(
                 <MenuItem key = {option.value} value = {option.value === 'any' ? '': option.value}>
@@ -89,7 +89,7 @@ export default function SearchForm ({searchFilters, setSearchFilters}){
                     handleChange('afterDate', newValue ? newValue.toISOString() : '');
                  }}
                  renderInput = {(params) => <TextField {...params} size="small" />}
-                 inputFormate = "DD/MM/YYYY"
+                 inputFormat = "DD/MM/YYYY"
                  clearable
                  />
                  </LocalizationProvider>

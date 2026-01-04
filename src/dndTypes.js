@@ -1,4 +1,5 @@
-// src/dndTypes.js
-export const ItemsTypes = {
-    PROPERTY: 'property',
+// dndTypes.js
+export const ItemTypes = {
+  PROPERTY: 'property',
+  FAVORITE: 'favorite',
 };

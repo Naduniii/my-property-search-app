@@ -41,7 +41,7 @@ const favoriteHeading = screen.getByText(/Favorites/i);
 expect(favoriteHeading).toBeInTheDocument();
 
 const removeButtons = screen.getAllByRole('button', {name: /Remove/i });
-expect (removeButtons.length).toBeGraterThan(0);
+expect (removeButtons.length).toBeGreaterThan(0);
 });
 
 test('removes property from favourites by button click', () => {
@@ -50,14 +50,14 @@ test('removes property from favourites by button click', () => {
         <App />
         </BrowserRouter>
     );
-    const addButtons = screen.getAllByRole ('button', {name: /Add to favorities/i});
+    const addButtons = screen.getAllByRole ('button', {name: /Add to favorites/i});
     fireEvent.click(addButtons[0]);
 
     const removeButtons = screen.getAllByRole ('button', {name: /Remove/i});
     fireEvent.click(removeButtons[0]);
 
-    const noFavoritesText = screen.getByText(/No Favoutite properties yet/i);
-    expect (noFavoritesText).toBeInTheDocument();
+    const  noFavoritesText = screen.getByText(/No favoutite properties yet/i);
+    expect ( noFavoritesText).toBeInTheDocument();
 });
 
 test ('clears all favorites' ,() => {
@@ -67,12 +67,15 @@ test ('clears all favorites' ,() => {
         </BrowserRouter>
     );
 
-    const addButtons = screen.getAllByRole('button', {name: /Add to favourites/i});
+    const addButtons = screen.getAllByRole('button', {name: /Add to favorites/i});
     fireEvent.click(addButtons[0]);
     fireEvent.click(addButtons[1]);
  
-    const clearButton = screen.getByRole('button', {name: /Clear all favorites/i});
-    expect (noFavoritesText).toBeInTheDocument();
+    const clearButton = screen.getByRole('button', { name: /Clear all favorites/i });
+    fireEvent.click(clearButton);
+
+    const noFavoritesText = screen.getByText(/No favorite properties yet/i);
+    expect(noFavoritesText).toBeInTheDocument();
 });
 
 
