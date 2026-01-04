@@ -65,7 +65,7 @@ export default function PropertyDetail({ properties, favorites, addFavorite, rem
                 height: '50px',
                 objectFit: 'cover',
                 borderRadius: '6px',
-                border: selectedImage === pic ? '2px solid #007bff': '1px solid #ccc',
+                border: selectedImage === pic ? '2px solid #5a96fcff': '1px solid #ccc',
                 cursor: 'pointer',
                }}
                onClick={() => setSelectedImage(pic)}

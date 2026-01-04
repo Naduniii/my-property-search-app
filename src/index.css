@@ -11,7 +11,7 @@ h1, h2, h3{
 }
 button {
   cursor: pointer;
-  background-color: #3d7cc1;
+  background-color: #0e4988;
   border: none;
   padding: 0.4rem 0.8rem;
   color: white;
@@ -21,7 +21,7 @@ button {
 }
 
 button:hover {
-  background-color: #0056b3;
+  background-color: #5a99dd;
 }
 .property-card, .favouritr-item{
   box-shadow: 0 2px 5px rgba(0,0,0,0.1);

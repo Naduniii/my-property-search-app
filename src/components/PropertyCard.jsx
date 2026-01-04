@@ -17,10 +17,10 @@ return (
        ref={drag}
        className="property-card"
        style={{
-        border: '1px solid #ccc',
+        border: '1px solid #ccccccff',
         borderRadius: '8px',
         padding: '0.5rem',
-        backgroundColor: '#fff',
+        backgroundColor: '#c6cfd5ff',
         opacity: isDragging ? 0.5 : 1,
         cursor: 'move',
         display: 'flex',

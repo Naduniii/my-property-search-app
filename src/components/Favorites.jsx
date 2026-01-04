@@ -84,7 +84,7 @@ function FavouriteItem({ property, removeFavorite }) {
         style={{ marginLeft: 'auto' }}
         aria-label="Remove from favourites"
       >
-        ❌
+        ✕
       </button>
     </li>
   );
@@ -113,10 +113,10 @@ export default function Favorites({
       ref={drop}
       style={{
         flex: '0 0 300px',
-        border: '2px dashed #007bff',
+        border: '2px dashed #677becff',
         padding: '1rem',
         minHeight: '400px',
-        backgroundColor: isOver ? '#e6f0ff' : '#f9f9f9',
+        backgroundColor: isOver ? '#b8d0efff' : '#b5d0ebff',
         borderRadius: '8px',
         display: 'flex',
         flexDirection: 'column',
