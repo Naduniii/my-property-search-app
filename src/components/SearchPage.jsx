@@ -64,7 +64,7 @@ export default function SearchPage ({
 
     return (
     <div className="App" style={{ display: 'flex', gap: '1rem' }}>
-      <div style={{ flex: '1 1 65%' }}>
+      <div style={{ flex: '1 1 65%' ,marginLeft:'13px'}}>
         <h1>Property Search</h1>
         <SearchForm searchFilters={searchFilters} setSearchFilters={setSearchFilters} />
         <PropertyList
