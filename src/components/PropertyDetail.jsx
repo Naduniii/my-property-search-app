@@ -57,7 +57,7 @@ export default function PropertyDetail({ properties, favorites, addFavorite, rem
             <img
                key={idx}
                src={pic}
-               alt={`${property.type} thubnail ${idx + 1}`}
+               alt={`${property.type} thumbnail ${idx + 1}`}
                style={{
                 width: '80px',
                 height: '50px',
