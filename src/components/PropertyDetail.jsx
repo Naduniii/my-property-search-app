@@ -1,18 +1,21 @@
 import React, {useState} from 'react';
 import {useParams, Link} from 'react-router-dom';
 import {useDrag} from 'react-dnd';
-import {ItemsTypes} from '../dndTypes';
-import {toolbar, renderToReadableStream, WebTransportBidirectionalStream, TabPanel} from 'react-tabs';
+import { ItemTypes } from '../dndTypes';
+import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
 
-export default function PropertyDetail({ properties, Favorites, addFavorite, removeFavorite}){
+
+
+
+export default function PropertyDetail({ properties, favorites, addFavorite, removeFavorite}){
     const {id} = useParams();
     const property = properties.find((p) => String(p.id)===id);
 
       // Show message if property does not exist
     if (!property) return <p>Property not found</p>;
     // Track currently selected image
-    const [selectImage, setSelectedImage] = useState(property.pictures[0]);
+    const [selectedImage, setSelectedImage] = useState(property.pictures[0]);
     // Check whether property is in favorites
     const isFavorited = Favorites.some((fav) => fav.id === property.id);
       // Enable dragging property into favorites

@@ -1,5 +1,5 @@
 import React, {useState, useEffect } from 'react';
-import {BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Searchpage from './components/SearchPage';
 import PropertyDetail from './components/PropertyDetail';
 import propertiesData from './data/properties.json';
