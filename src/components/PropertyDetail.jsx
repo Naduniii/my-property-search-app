@@ -10,15 +10,17 @@ import 'react-tabs/style/react-tabs.css';
 
 export default function PropertyDetail({ properties, favorites, addFavorite, removeFavorite}){
     const {id} = useParams();
-    const property = properties.find((p) => String(p.id)===id);
+    const property = properties.find((p) => String(p.id) === id);
 
-      // Show message if property does not exist
+    // Show message if property does not exist
     if (!property) return <p>Property not found</p>;
     // Track currently selected image
     const [selectedImage, setSelectedImage] = useState(property.pictures[0]);
+    
     // Check whether property is in favorites
     const isFavorited = favorites.some((fav) => fav.id === property.id);
-      // Enable dragging property into favorites
+    
+    // Enable dragging property into favorites
     const [{ isDragging}, drag] = useDrag(() => ({
         type: ItemTypes.PROPERTY,
         item: {property},
@@ -34,7 +36,7 @@ export default function PropertyDetail({ properties, favorites, addFavorite, rem
             <p><strong>Location:</strong>{property.location}</p>
 
         <div
-           ref = {drag}
+           ref={drag}
            style={{ cursor: 'move', opacity: isDragging ? 0.5 : 1, border: '1px solid #ccc', padding: '1rem', borderRadius: '8px' }}
            aria-label = "Drag property to add to favourites"
         >

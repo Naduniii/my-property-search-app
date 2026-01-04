@@ -4,7 +4,7 @@ import {ItemTypes} from '../dndTypes';
 
 function RemoveZone({removeFavorite}){
     const [{ isOver, canDrop}, drop] = useDrop({
-        accept: [ItemTypes.FAVORITE],
+        accept: ItemTypes.FAVORITE,
         drop: (item) => {
             removeFavorite(item.id);
         },
@@ -47,8 +47,8 @@ export default function Favorites({ favorites, addFavorite, removeFavorite, clea
     });
   return (
     <aside
-       ref = {drop}
-       style={{
+        ref = {drop}
+        style={{
         flex: '0 0 300px',
         border: '2px dashed #007bff',
         padding: '1rem',
@@ -93,7 +93,7 @@ export default function Favorites({ favorites, addFavorite, removeFavorite, clea
                           />
                           <strong>{property.type}</strong> - £{property.price.toLocaleString()}
                           <button
-                            onClick={() => removeFavorite (property.id)}
+                            onClick={() => removeFavorite(property.id)}
                             style={{marginLeft: 'auto'}}
                             aria-label= {`Remove ${property.type} from favorites`}
                             >

@@ -1,10 +1,10 @@
-import React  from 'react';
+import React from 'react';
 import {Link} from 'react-router-dom';
 import {useDrag} from 'react-dnd';
 import {ItemTypes} from '../dndTypes';
 
 export default function PropertyCard ({property, isFavorited, addFavorite, removeFavorite}) {
-    const [{ isDragging }, drag] = useDrag (() => ({
+    const [{ isDragging }, drag] = useDrag(() => ({
         type: ItemTypes.PROPERTY,
         item: {property},
         collect: (monitor) => ({
@@ -30,7 +30,7 @@ return (
     >
         <Link to={`/property/${property.id}`}>
         <img src = {property.picture}
-        style={{width: '100%', height: '180px', objectFit: 'cover', borderRadius: '6px'}}
+            style={{width: '100%', height: '180px', objectFit: 'cover', borderRadius: '6px'}}
         />
         <h3 style = {{margin: '0.5rem'}}>
             {property.type} - £{property.price.toLocaleString()}
@@ -49,7 +49,7 @@ return (
                 Remove Favorite
             </button>
         ) : (
-            <button onClick={() => addFavorite (property)} aria-label = "Add to favourits">
+            <button onClick={() => addFavorite(property)} aria-label = "Add to favourits">
                 Add to Favorites
             </button>
         )}

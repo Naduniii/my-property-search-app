@@ -11,7 +11,7 @@ export default function SearchPage ({
     removeFavorite,
     clearFavorites
 }) {
-    const  [searchFilters, setSearchFilters] = useState ({
+    const[searchFilters, setSearchFilters] = useState ({
         type: '',
         minPrice: '',
         maxPrice: '',
@@ -22,8 +22,8 @@ export default function SearchPage ({
     });
      // Compute filtered properties based on search filters
 
-    const filteredProperties = useMemo (() => {
-        return properties.filter ((property) => {
+    const filteredProperties = useMemo(() => {
+        return properties.filter((property) => {
                   // Property type filter
             if (searchFilters.type && searchFilters.type !== 'any' && property.type.toLowerCase() 
                 !== searchFilters.type.toLowerCase()) {
@@ -41,8 +41,8 @@ export default function SearchPage ({
                 return false;
                   // Date added filter
             if (searchFilters.afterDate){
-                const propertyDate = new Date (property.added.year, new Date (`${property.added.month} 1, 2000`).getMonth(),property.added.day);
-                    const filterDate = new Date (searchFilters.afterDate);
+                const propertyDate = new Date(property.added.year, new Date (`${property.added.month} 1, 2000`).getMonth(),property.added.day);
+                    const filterDate = new Date(searchFilters.afterDate);
                     if (propertyDate < filterDate) 
                         return false;
                 }

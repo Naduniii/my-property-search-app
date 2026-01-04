@@ -7,7 +7,7 @@ export default function PropertyList({ properties, favorites, addFavorite, remov
     }
     return (
         <div className= "property-list" style={{display: 'grid', gap:'1rem' , gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))'}}>
-        {properties.map ((property)=> (
+        {properties.map((property)=> (
             <PropertyCard
             key = {property.id}
             property = {property}

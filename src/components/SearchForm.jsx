@@ -53,7 +53,7 @@ export default function SearchForm ({searchFilters, setSearchFilters}){
 
              <TextField
                 type="number"
-                label = "Min price"
+                label = "Max price"
                 value = {searchFilters.maxPrice}
                 onChange = {(e) => handleChange ('maxPrice' , e.target.value)}
                 variant = "outlined"
@@ -81,7 +81,7 @@ export default function SearchForm ({searchFilters, setSearchFilters}){
                 inputProps = {{min: 0}}
             />
 
-           < LocalizationProvider dateAdapter = {AdapterDayjs}>
+           <LocalizationProvider dateAdapter = {AdapterDayjs}>
              <DatePicker
                  label = "Added After"
                  value = {searchFilters.afterDate ? dayjs (searchFilters.afterDate) : null}
